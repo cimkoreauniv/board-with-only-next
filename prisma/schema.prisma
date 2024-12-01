@@ -1,21 +1,28 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+model AppUser {
+  id       Int       @id @default(autoincrement())
+  username String    @unique
+  nickname String
+  password String
+  articles Article[]
+}
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  authorId  Int
+  author    AppUser  @relation(fields: [authorId], references: [id])
+  deleted   Boolean  @default(false)
 
-generator client {
-  provider = "prisma-client-js"
+  @@index([authorId])
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "postgresql" // 사용할 데이터베이스 종류 (예: postgresql, mysql 등)
   url      = env("DATABASE_URL")
 }
 
-model users {
-  id Int @id @default(autoincrement())
-  username String @unique
-  nickname String
-  password String
+generator client {
+  provider = "prisma-client-js"
 }

@@ -5,7 +5,8 @@ export interface UserTable extends User {
   password: string;
 }
 
-export interface UserRepository {
-  findByUsername: (username: string) => Promise<User | undefined>;
+export interface UserInterface {
+  findByUsername: (username: string) => Promise<UserTable | undefined>;
+  findByUserId: (id: number) => Promise<User | undefined>;
   createUser: (data: SignupInfo) => Promise<void>;
 }

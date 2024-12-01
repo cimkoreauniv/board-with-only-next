@@ -9,14 +9,15 @@ const NavBarToggle: React.FC = () => {
     setIsMenuActive((prev) => !prev);
 
     // 메뉴 활성화 상태에 따라 클래스 토글
-    const menuElement = document.querySelector(".navbar-menu");
-    if (menuElement) {
-      if (isMenuActive) {
-        menuElement.classList.remove("is-active");
-      } else {
-        menuElement.classList.add("is-active");
+    document.querySelectorAll(".navbar-menu").forEach((menuElement) => {
+      if (menuElement) {
+        if (isMenuActive) {
+          menuElement.classList.remove("is-active");
+        } else {
+          menuElement.classList.add("is-active");
+        }
       }
-    }
+    });
   };
 
   return (

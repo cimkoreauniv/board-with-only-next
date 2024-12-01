@@ -1,5 +1,5 @@
 "use client";
-import { signup } from "@/api/auth/signup";
+import { signup } from "@/api/auth";
 import { SignupInfo } from "@/models/User";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";

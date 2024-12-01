@@ -1,5 +1,5 @@
 "use client";
-import { login } from "@/api/auth/login";
+import { login } from "@/api/auth";
 import { LoginInfo } from "@/models/User";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";

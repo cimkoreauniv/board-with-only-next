@@ -1,4 +1,4 @@
-import { fetchUser } from "@/api/auth/fetchUser";
+import { fetchUser } from "@/api/auth";
 import Link from "next/link";
 import NavBarToggle from "./NavBarToggle";
 
@@ -18,6 +18,14 @@ const NavBar: React.FC = async () => {
       </div>
 
       <div className="navbar-menu">
+        <div className="navbar-start">
+          <Link href="/article" className="navbar-item">
+            게시판
+          </Link>
+        </div>
+      </div>
+
+      <div className="navbar-menu">
         <div className="navbar-end">
           <div className="navbar-item">
             {user ? (
@@ -30,7 +38,7 @@ const NavBar: React.FC = async () => {
                 </Link>
               </div>
             ) : (
-              <div className="buttons">
+              <div className="buttons is-right">
                 <Link href="/login" className="button is-light">
                   로그인
                 </Link>

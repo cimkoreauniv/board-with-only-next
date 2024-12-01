@@ -1,35 +1,16 @@
-import { SignupInfo } from "@/models/User";
 import { PrismaClient } from "@prisma/client";
+import { UserInterface } from "./user.interface";
+import { UserRepository } from "./user.repository";
+import { ArticleInterface } from "./article.interface";
+import { ArticleRepository } from "./article.repository";
 
 export class DBClient {
-  prisma: PrismaClient;
+  client: PrismaClient;
+  user: UserInterface;
+  article: ArticleInterface;
   constructor() {
-    this.prisma = new PrismaClient();
-  }
-
-  async findByUserId(id: number) {
-    return await this.prisma.users.findUnique({
-      where: {
-        id,
-      },
-    });
-  }
-
-  async findByUsername(username: string) {
-    return await this.prisma.users.findUnique({
-      where: {
-        username,
-      },
-    });
-  }
-
-  async createUser({ username, nickname, password }: SignupInfo) {
-    await this.prisma.users.create({
-      data: {
-        username,
-        nickname,
-        password,
-      },
-    });
+    this.client = new PrismaClient();
+    this.user = new UserRepository(this.client);
+    this.article = new ArticleRepository(this.client);
   }
 }
