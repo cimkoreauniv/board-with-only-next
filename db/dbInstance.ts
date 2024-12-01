@@ -1,8 +1,5 @@
-import { InMemoryDB } from "./InMemoryDB";
+import { DBClient } from "./DBClient";
 
-let db: InMemoryDB;
+const dbInstance = new DBClient();
 
-export function getDB() {
-  if (!db) db = new InMemoryDB();
-  return db;
-}
+export default dbInstance;
