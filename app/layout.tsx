@@ -1,5 +1,6 @@
 import NavBar from "@/components/NavBar";
 import "bulma/css/bulma.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export const metadata = {
   title: "Next.js",

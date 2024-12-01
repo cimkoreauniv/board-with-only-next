@@ -1,10 +1,10 @@
 "use server";
 
 import dbInstance from "@/db/dbInstance";
-import { LoginInfo, SignupInfo } from "@/models/User";
+import { LoginInfo, SignupInfo, User } from "@/models/User";
 import { cookies } from "next/headers";
 
-export const fetchUser = async () => {
+export const fetchUser: () => Promise<User | undefined> = async () => {
   const cookie = await cookies();
   const token = cookie.get("token");
   if (token) return await dbInstance.user.findByUserId(Number(token.value));

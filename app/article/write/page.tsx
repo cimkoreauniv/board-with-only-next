@@ -8,6 +8,7 @@ export default function CreateArticle() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const router = useRouter();
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     createArticle({ title, content }).then((id) => {
